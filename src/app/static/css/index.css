@@ -1,0 +1,78 @@
+#wrapper
+{
+    width: 700px;
+    text-align: center;
+    z-index: 1;
+}
+
+#container
+{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#containImg
+{
+    pointer-events: none;
+}
+
+#btn
+{
+    width: 290px;
+    height: 50px;
+    background: #B7F8D1;
+    box-shadow: 0px 4px 4px #5DB580;
+    border: 0px;
+    border-radius: 15px;
+    font-size: 26px;
+}
+
+#btn:hover
+{ background: #A5EEC2 }
+
+#btn:active
+{ background: #71E8A0 }
+
+#link, #alias, #passw, #result
+{
+    height: 66px;
+    width: calc(100% - 19px * 2);
+    background: #FFFFFF;
+    border-bottom: 0.4px solid #8a8989;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 15px;
+    padding: 0 19px;
+    font-size: 28px;
+}
+
+#alias, #passw, #result, #btn, #qrCode
+{
+    margin-top: 15px;
+}
+
+#qrCode
+{
+    border-radius: 15px;
+}
+
+#long
+{
+    position: absolute;
+	height: 332px;
+    right: 0;
+    bottom: 0;
+}
+
+body, html
+{
+    background-color: #FCF6F6;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}

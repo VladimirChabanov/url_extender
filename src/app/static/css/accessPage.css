@@ -1,0 +1,56 @@
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html, body
+{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+.hidden
+{
+    display: none;
+}
+
+#container 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#passwd, #error
+{
+    width: 711px;
+    height: 53px;
+    background: #FFFFFF;
+    border-radius: 15px;
+    font-size: 26px;
+    padding: 0 0 0 20px;
+}
+
+#btnPass, #error
+{
+    margin-top: 40px;
+}
+
+#btnPass
+{
+    width: 290px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 26px;
+}
+
+#btnPass:hover
+{ background: #9EDAA4 }
+
+#btnPass:active
+{ background: #59B962 }
