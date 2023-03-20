@@ -38,9 +38,7 @@ def get_extend(alias):
     WHERE alias = '{alias}'
     """
 
-    app.db_connection = connect(host=app.config['DB_HOST_NAME'],
-                         user=app.config['DB_USER'],
-                         password=app.config['DB_PASSWORLD'])
+    app.db_connection.cmd_reset_connection()
     with app.db_connection.cursor() as cursor:
         cursor.execute(select_query)
         db_resp = cursor.fetchall()
@@ -76,7 +74,8 @@ def extend():
     
     while True:
         quer = f"SELECT COUNT(*) FROM main WHERE alias = '{alias}'"
-
+        
+        app.db_connection.cmd_reset_connection()
         with app.db_connection.cursor() as cursor:
             cursor.execute(quer)
             a = int(cursor.fetchall()[0][0])
@@ -109,7 +108,8 @@ def submit():
     SELECT password, url FROM main
     WHERE alias = '{request.json['alias']}'
     """
-
+    
+    app.db_connection.cmd_reset_connection()
     with app.db_connection.cursor() as cursor:
         cursor.execute(select_query)
         db_resp = cursor.fetchall()
