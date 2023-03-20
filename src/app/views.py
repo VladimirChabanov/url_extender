@@ -38,6 +38,9 @@ def get_extend(alias):
     WHERE alias = '{alias}'
     """
 
+    app.db_connection = connect(host=app.config['DB_HOST_NAME'],
+                         user=app.config['DB_USER'],
+                         password=app.config['DB_PASSWORLD'])
     with app.db_connection.cursor() as cursor:
         cursor.execute(select_query)
         db_resp = cursor.fetchall()
@@ -114,7 +117,10 @@ def submit():
         data = db_resp[0]
         
         if request.json['password'] == data[0]:
-            return data[1]
+            url = data[1]
+            if url.find("http://") != 0 and url.find("https://") != 0:
+                url = "http://" + url
+            return url
         else: 
             return make_response("Wrong password", 418)
             
