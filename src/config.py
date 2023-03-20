@@ -1,5 +1,5 @@
-DB_HOST_NAME = 'db'
-DB_USER = 'root'
+DB_HOST_NAME = '192.168.1.200'
+DB_USER = 'db_user_for_app'
 DB_PASSWORLD = '123'
 DB_DATABASE = 'main'
 DB_CONNECT_RETRIES = 3
