@@ -38,7 +38,7 @@ def get_extend(alias):
     WHERE alias = '{alias}'
     """
 
-    app.db_connection.cmd_reset_connection()
+    app.db_connection.commit()
     with app.db_connection.cursor() as cursor:
         cursor.execute(select_query)
         db_resp = cursor.fetchall()
@@ -75,7 +75,7 @@ def extend():
     while True:
         quer = f"SELECT COUNT(*) FROM main WHERE alias = '{alias}'"
         
-        app.db_connection.cmd_reset_connection()
+        app.db_connection.commit()
         with app.db_connection.cursor() as cursor:
             cursor.execute(quer)
             a = int(cursor.fetchall()[0][0])
@@ -109,7 +109,7 @@ def submit():
     WHERE alias = '{request.json['alias']}'
     """
     
-    app.db_connection.cmd_reset_connection()
+    app.db_connection.commit()
     with app.db_connection.cursor() as cursor:
         cursor.execute(select_query)
         db_resp = cursor.fetchall()
