@@ -1,7 +1,7 @@
-DB_HOST_NAME = '192.168.1.200'
-DB_USER = 'db_user_for_app'
-DB_PASSWORLD = '123'
-DB_DATABASE = 'main'
-DB_CONNECT_RETRIES = 3
-HOST_NAME = '127.0.0.1'
-HOST_PORT = 80
+DB_HOST_NAME = db_host       # 127.0.0.1
+DB_USER = user               # 'root'
+DB_PASSWORLD = passworld     # ''
+DB_DATABASE = database       # 'main'
+DB_CONNECT_RETRIES = retries # 3
+HOST_NAME = host             # '127.0.0.1'
+HOST_PORT = port             # 80

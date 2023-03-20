@@ -54,6 +54,12 @@ def get_extend(alias):
 
 #Post
 
+def make_random_alias(url_len):
+    alias = random.choice(nouns)
+    while len(f"http://{HOST_NAME}{HOST_PORT}/s/{alias}") <= url_len:
+        alias = f"{random.choice(adjs)}_{alias}"
+    return alias
+
 #рискованная штука, подвержена sql инъекциям !
 @app.route('/extendUrl', methods=["POST"])
 def extend():
@@ -62,9 +68,7 @@ def extend():
     password = request.json['password']
 
     if alias == "":
-        alias = random.choice(nouns)
-        while len(f"http://{HOST_NAME}{HOST_PORT}/s/{alias}")<=len(url):
-            alias = f"{random.choice(adjs)}_{alias}"
+        alias = make_random_alias(len(url))
     
     while True:
         quer = f"SELECT COUNT(*) FROM main WHERE alias = '{alias}'"
@@ -75,7 +79,7 @@ def extend():
             if a == 0: 
                 break
             else: 
-                alias = f"{random.choice(adjs)}_{random.choice(nouns)}"
+                alias = make_random_alias(len(url))
 
     insert_query = f"""
     INSERT INTO main (url, alias, password)
