@@ -40,10 +40,10 @@ def get_extend(alias):
 
     with app.db_connection.cursor() as cursor:
         cursor.execute(select_query)
-        fetch = cursor.fetchall()
-        if (len(fetch) == 0): return "Нету"
+        db_resp = cursor.fetchall()
+        if (len(db_resp) == 0): return "Нету"
         
-        data = fetch[0]
+        data = db_resp[0]
         if len(data[0]) != 0:
             return redirect(f"http://{HOST_NAME}{HOST_PORT}/pass?alias={alias}")
         else:
@@ -59,6 +59,7 @@ def make_random_alias(url_len):
     while len(f"http://{HOST_NAME}{HOST_PORT}/s/{alias}") <= url_len:
         alias = f"{random.choice(adjs)}_{alias}"
     return alias
+
 
 #рискованная штука, подвержена sql инъекциям !
 @app.route('/extendUrl', methods=["POST"])
@@ -108,8 +109,10 @@ def submit():
 
     with app.db_connection.cursor() as cursor:
         cursor.execute(select_query)
-        data = cursor.fetchall()[0]
-
+        db_resp = cursor.fetchall()
+        if (len(db_resp) == 0): return "Нету"
+        data = db_resp[0]
+        
         if request.json['password'] == data[0]:
             return data[1]
         else: 
